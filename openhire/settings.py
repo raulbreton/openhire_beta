@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 #Custom  User
@@ -6,6 +7,11 @@ AUTH_USER_MODEL = 'users.CustomUser'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Define the media root where uploaded files will be stored on the server.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Define the URL prefix for serving media files during development.
+MEDIA_URL = '/media/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
