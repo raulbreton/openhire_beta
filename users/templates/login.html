@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <br><br><br><br><br><br><br><br><br><br>
+  <div class="col-md-4 offset-md-4 container-fluid card">
+    <h1>La sesión esta actualmente iniciada...</h1>
+  </div>
+
+{% else %}
+<br><br><br><br><br><br><br><br>
+<div class="col-md-4 offset-md-4 container-fluid card">
+  <h4><br><strong>Listo para dar el siguiente paso?</strong><br><br></h4>
+  <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+    
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">* Correo electrónico:</label>
+    <input type="text" class="form-control" name="email">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">* Contraseña:</label>
+    <input type="password" class="form-control" name="password">
+  </div>
+  <div class="d-grid gap-2">
+    <button class="btn btn-primary" type="submit"><strong>Continuar</strong></button>
+  </div>
+  <br>
+  <div class="text-center">
+    <a class="text-center" href="#">¿No eres miembro? Crea una cuenta</a>
+  </div>
+  <br>
+</form>
+</div>
+{% endif %}
+{% endblock  %}
