@@ -8,29 +8,54 @@
   </div>
 
 {% else %}
-<br><br><br><br><br><br><br><br>
-<div class="col-md-4 offset-md-4 container-fluid card">
-  <h4><br><strong>Listo para dar el siguiente paso?</strong><br><br></h4>
-  <form method="POST" action="{% url 'login' %}">
-      {% csrf_token %}
-    
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">* Correo electrónico:</label>
-    <input type="text" class="form-control" name="email">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">* Contraseña:</label>
-    <input type="password" class="form-control" name="password">
-  </div>
-  <div class="d-grid gap-2">
-    <button class="btn btn-primary" type="submit"><strong>Continuar</strong></button>
-  </div>
-  <br>
-  <div class="text-center">
-    <a class="text-center" href="#">¿No eres miembro? Crea una cuenta</a>
-  </div>
-  <br>
-</form>
+  <!-- ... Messages ... -->
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <!-- ... Function to close automatically messages  ... -->
+  <script>
+    function closeMessages() {
+      var messages = document.querySelectorAll('.alert.alert-warning');
+      messages.forEach(function (message) {
+        setTimeout(function () {
+          message.style.display = 'none';
+        }, 5000); // 5000 milisecs.
+      });
+    }
+    // Calls closeMessages function when the webpage loads
+    window.addEventListener('load', closeMessages);
+  </script>
+  <!-- ... Head content ... -->
+  <br><br><br><br><br><br><br><br>
+  <div class="col-md-4 offset-md-4 container-fluid card">
+    <h4><br><strong>Listo para dar el siguiente paso?</strong><br><br></h4>
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+      
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">* Correo electrónico:</label>
+      <input type="text" class="form-control" name="email">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">* Contraseña:</label>
+      <input type="password" class="form-control" name="password">
+    </div>
+    <div class="d-grid gap-2">
+      <button class="btn btn-primary" type="submit"><strong>Continuar</strong></button>
+    </div>
+    <br>
+    <div class="text-center">
+      <a class="text-center" href="{% url 'register' %}">¿No eres miembro? Crea una cuenta</a>
+    </div>
+    <br>
+  </form>
 </div>
 {% endif %}
 {% endblock  %}

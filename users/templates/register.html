@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- ... Messages ... -->
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <!-- ... Function to close automatically messages  ... -->
+  <script>
+    function closeMessages() {
+      var messages = document.querySelectorAll('.alert.alert-warning');
+      messages.forEach(function (message) {
+        setTimeout(function () {
+          message.style.display = 'none';
+        }, 5000); // 5000 milisecs.
+      });
+    }
+    // Calls closeMessages function when the webpage loads
+    window.addEventListener('load', closeMessages);
+  </script>
+  <!-- ... Head content ... -->
+  <br><br><br>
+  <div class="col-md-4 offset-md-4 container-fluid card">
+    <h4><br><strong>Crea una Cuenta</strong><br><br></h4>
+      <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary" type="submit"><strong>Registrarse</strong></button>
+        </div>
+      </form>
+  </div>
+{% endblock  %}
