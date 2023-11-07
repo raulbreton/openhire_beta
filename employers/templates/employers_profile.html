@@ -1,0 +1,36 @@
+{% extends "employers_base.html" %}
+{% block content %}
+<div class="container text-center">
+    <br>
+    <h1>Información de la Cuenta</h1>
+    <br>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <fieldset>
+            <div style="display: flex; flex-direction: column;">
+                <label for="{{ form.company_name.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold; ">Nombre de la Compañia:</label>
+                {{ form.company_name }}
+                {{ form.company_name.errors }}
+            </div>
+            <br>
+            <div style="display: flex; flex-direction: column;">
+                <label for="{{ form.location.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold;">Ubicación:</label>
+                {{ form.location }}
+                {{ form.location.errors }}
+            </div>
+            <br>
+            <div style="display: flex; flex-direction: column;">
+                <label for="{{ form.description.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold;">Descripción:</label>
+                {{ form.description }}
+                {{ form.description.errors }}
+            </div>
+        </fieldset>
+        <br>
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit"><strong>Actualizar</strong></button>
+        </div>
+    </form>
+</div>
+
+{% endblock  %}
