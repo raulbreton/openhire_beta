@@ -13,7 +13,7 @@ class EmployerProfile(models.Model):
         return self.user.email
 
 def created_profile(sender, instance, created, **kwargs):
-    if created:
+    if created and instance.is_employer:
         user_profile = EmployerProfile(user=instance)
         user_profile.save()
 

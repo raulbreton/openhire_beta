@@ -15,7 +15,7 @@ class CandidateProfile(models.Model):
         return self.user.email
     
 def created_profile(sender, instance, created, **kwargs):
-    if created:
+    if created  and instance.is_candidate:
         user_profile = CandidateProfile(user=instance)
         user_profile.save()
 
