@@ -1,0 +1,66 @@
+{% extends "candidates_base.html" %}
+{% block content %}
+<div class="container text-center">
+    <br>
+    <h1>Mi Perfil de Candidato</h1>
+    <br>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <fieldset>
+            <div style="display: flex; flex-direction: column;">
+                <label for="{{ form.name.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold;">Nombre:</label>
+                {{ form.name }}
+                {{ form.name.errors }}
+            </div>
+            <br>
+            <div style="display: flex; flex-direction: column;">
+                <label for="{{ form.last_name.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold;">Apellido:</label>
+                {{ form.last_name }}
+                {{ form.last_name.errors }}
+            </div>
+            <br>
+            <div style="display: flex; flex-direction: column;">
+                <label for="{{ form.phone.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold;">Teléfono:</label>
+                {{ form.phone }}
+                {{ form.phone.errors }}
+            </div>
+            <br>
+            <div style="display: flex; flex-direction: column;">
+                <label for="{{ form.country.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold;">País:</label>
+                {{ form.country }}
+                {{ form.country.errors }}
+            </div>
+            <br>
+            <div style="display: flex; flex-direction: column;">
+                <label for="{{ form.city.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold;">Ciudad:</label>
+                {{ form.city }}
+                {{ form.city.errors }}
+            </div>
+            <br>
+            <div style="display: flex; flex-direction: column;">
+                <label for="{{ form.street.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold;">Calle:</label>
+                {{ form.street }}
+                {{ form.street.errors }}
+            </div>
+            <br>
+            <div style="display: flex; flex-direction: column;">
+                <label for="{{ form.postal_code.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold;">Código Postal:</label>
+                {{ form.postal_code }}
+                {{ form.postal_code.errors }}
+            </div>
+            <br>
+            <div style="display: flex; flex-direction: column;">
+                <label for="{{ form.cv.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold;">Currículum Vitae (CV):</label>
+                {{ form.cv }}
+                {{ form.cv.errors }}
+            </div>
+        </fieldset>
+        <br>
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit"><strong>Actualizar</strong></button>
+        </div>
+    </form>
+</div>
+
+{% endblock  %}

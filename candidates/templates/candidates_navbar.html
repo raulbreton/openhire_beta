@@ -2,7 +2,7 @@
   <nav nav class="navbar" style="background-color: #e3f2fd;">
     <!-- Main Functions -->
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">OpenHire</a>
+      <a class="navbar-brand" href="{% url 'candidates_home' %}">OpenHire</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
@@ -19,7 +19,7 @@
       <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a class="btn btn-primary me-md-2" type="button" href="#"><strong>Mi Perfil</strong></a>
+            <a class="btn btn-primary me-md-2" type="button" href="{% url 'candidates_profile' request.user.id %}"><strong>Mi Perfil</strong></a>
           </div>
         {% else %}
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">

@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from users.views import login_user, logout_user, register_user
 from employers.views import employers_home, employers_profile
-from candidates.views import candidates_home
+from candidates.views import candidates_home, candidates_profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -17,6 +17,7 @@ urlpatterns = [
     path('employer_profile/<int:pk>', employers_profile, name="employers_profile"),
     # Candidates
     path('candidates_home/', candidates_home, name="candidates_home"),
+    path('candidates_profile/<int:pk>', candidates_profile, name="candidates_profile"),
 ]
 
 # Add this for serving media files during development

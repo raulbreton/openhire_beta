@@ -14,7 +14,7 @@ def login_user(request):
             if user.is_employer == True:
                 return redirect('employers_home')
             else:
-                return redirect('candidate_home')
+                return redirect('candidates_home')
         else:
             messages.error(request, ("Favor de verificar el correo o contraseña."))
             return redirect('login')
