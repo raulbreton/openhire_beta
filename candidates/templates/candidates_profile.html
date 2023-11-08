@@ -5,7 +5,7 @@
     <h1>Mi Perfil de Candidato</h1>
     <br>
 
-    <form method="POST" action="">
+    <form method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
         <fieldset>
             <div style="display: flex; flex-direction: column;">
@@ -50,11 +50,20 @@
                 {{ form.postal_code.errors }}
             </div>
             <br>
-            <div style="display: flex; flex-direction: column;">
-                <label for="{{ form.cv.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold;">Currículum Vitae (CV):</label>
-                {{ form.cv }}
-                {{ form.cv.errors }}
-            </div>
+<div style="display: flex; flex-direction: column;">
+    <label for="{{ form.cv.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold;">Currículum Vitae (CV):</label>
+    <div class="cv-upload">
+        {{ form.cv }}
+        {{ form.cv.errors }}
+        {% if profile.cv %}
+        <div class="cv-actions">
+            <button id="modify-cv-button" class="btn btn-primary">Modificar CV</button>
+            <button id="clear-cv-button" class="btn btn-danger">Limpiar CV</button>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
         </fieldset>
         <br>
         <div class="d-grid gap-2">
