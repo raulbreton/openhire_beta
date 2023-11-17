@@ -7,7 +7,7 @@ class EmployerProfile(models.Model):
     company_name = models.CharField(max_length=100)
     description = models.TextField()
     location = models.CharField(max_length=100)
-    job_offers = models.ManyToManyField('job_offers.JobOffer')
+    #job_offers = models.ManyToManyField('job_offers.JobOffer')
 
     def __str__(self):
         return self.user.email

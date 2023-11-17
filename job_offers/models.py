@@ -1,4 +1,5 @@
 from django.db import models
+from employers.models import EmployerProfile
 
 class JobOffer(models.Model):
     JOB_TYPE_CHOICES = (
@@ -13,7 +14,15 @@ class JobOffer(models.Model):
     description = models.TextField()
     job_type = models.CharField(max_length=20, choices=JOB_TYPE_CHOICES)
     location = models.CharField(max_length=100)
-    publication_date = models.DateTimeField()
-    expiration_date = models.DateTimeField()
-    requirements = models.TextField()
+    created_at = models.DateTimeField()
     salary = models.DecimalField(max_digits=10, decimal_places=2)
+    employer = models.ForeignKey(
+        EmployerProfile, on_delete=models.DO_NOTHING, default=None
+    )
+
+    def __str__(self):
+        return(
+            f"{self.job_title}"
+            f"{self.employer}"
+            f"({self.created_at:%d-%m-%Y})"
+        )
