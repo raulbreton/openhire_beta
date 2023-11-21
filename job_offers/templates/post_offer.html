@@ -1,0 +1,12 @@
+{% extends "base_job_offers.html" %}
+{% block content %}
+  <!-- ... User Validation ... -->
+{% if user.is_authenticated and user.is_employer %}
+  <div class="col-md-4 offset-md-4 container-fluid card">
+    <h1>Publicar un Empleo</h1>
+  </div>
+{% else %}
+    <!-- ... Login Redirect ... -->
+    <p>No tienes permisos para acceder a esta página.</p>
+{% endif %}
+{% endblock  %}

@@ -4,6 +4,7 @@ from django.urls import path, re_path
 from users.views import login_user, logout_user, register_user
 from employers.views import employers_home, employers_profile
 from candidates.views import candidates_home, candidates_profile
+from job_offers.views import post_offer
 # Serve Media Files
 from django.conf import settings
 from django.conf.urls.static import static
@@ -20,6 +21,8 @@ urlpatterns = [
     # Candidates
     path('candidates_home/', candidates_home, name="candidates_home"),
     path('candidates_profile/<int:pk>', candidates_profile, name="candidates_profile"),
+    #Job Offers
+    path('post_offer/', post_offer, name="post_offer"),
 ]
 
 # Serve Media Files

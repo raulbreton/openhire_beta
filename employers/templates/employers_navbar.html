@@ -17,9 +17,13 @@
       </div>
       <!-- Login/Profile Button -->
       <ul class="navbar-nav ml-auto">
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and user.is_employer %}
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-primary me-md-2" type="button" href="{% url 'employers_profile' request.user.id %}"><strong>Mi Perfil</strong></a>
+          </div>
+        {% elif user.is_authenticated and user.is_candidate %}
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn btn-primary me-md-2" type="button" href="{% url 'login' %}"><strong>Inicia Sesión</strong></a>
           </div>
         {% else %}
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">

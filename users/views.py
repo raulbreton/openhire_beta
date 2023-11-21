@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm
 
 def login_user(request):
+    if request.user.is_authenticated:
+        logout(request)
     if request.method == "POST":
         username = request.POST['email']
         password = request.POST['password']
