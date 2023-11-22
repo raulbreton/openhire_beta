@@ -3,9 +3,13 @@ from .forms import CandidateProfile
 from users.models import CustomUser
 from django.contrib.auth import login
 from .forms import CandidateProfileForm
+from job_offers.models import JobOffer
 
 def candidates_home(request):
-    return render( request, "candidates_home.html", {})
+    # Get 5 random job offers
+    job_offers = JobOffer.objects.order_by('?')[:5]
+
+    return render( request, "candidates_home.html", {'job_offers': job_offers})
 
 def candidates_profile(request, pk):
     #Create instance

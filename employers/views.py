@@ -1,12 +1,12 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from users.models import CustomUser
-from users.forms import SignUpForm
 from django.contrib.auth import login
 from .models import EmployerProfile
 from .forms import EmployerProfileForm
+
 def employers_home(request):
-    return render( request, "employers_home.html", {})
+    return render( request, "employers_home.html")
 
 def employers_profile(request, pk):
     if request.user.is_authenticated:

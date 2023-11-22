@@ -1,4 +1,32 @@
 {% extends "candidates_base.html" %}
 {% block content %}
-<h1> Candidates Home Page </h1>
+    <br><br><br>
+    <div class="container-fluid">
+        <div class="text-center">
+            <h1>Encuentra tu siguiente empleo</h1>
+        </div>
+        <br>
+
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <br>
+
+        <div class="row">
+            {% for job_offer in job_offers %}
+                <div class="col-md-6">
+                    <div class="card bg-light" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ job_offer.job_title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">{{ job_offer.company_name }}</h6>
+                            <p class="card-text">{{ job_offer.description }}</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock  %}
