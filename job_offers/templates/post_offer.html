@@ -2,11 +2,54 @@
 {% block content %}
   <!-- ... User Validation ... -->
 {% if user.is_authenticated and user.is_employer %}
+  <br>
   <div class="col-md-4 offset-md-4 container-fluid card">
-    <h1>Publicar un Empleo</h1>
+    <h2><strong>Publicar un Empleo</strong></h2>
+    <!-- ... Form ... -->
+    <form method=POST>
+      {% csrf_token %}
+      <fieldset>
+        <div style="display: flex; flex-direction: column;">
+            <label for="{{ form.job_title.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold; ">Titulo del Empleo:</label>
+            {{ form.job_title }}
+            {{ form.job_title.errors }}
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <label for="{{ form.description.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold; ">Descripción del Empleo:</label>
+            {{ form.description }}
+            {{ form.description.errors }}
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <label for="{{ form.job_type.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold; ">Tipo de Empleo:</label>
+            {{ form.job_type }}
+            {{ form.job_type.errors }}
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <label for="{{ form.location.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold; ">Ubicación del Empleo:</label>
+            {{ form.location }}
+            {{ form.location.errors }}
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <label for="{{ form.salary.id_for_label }}" style="margin-right: 10px; text-align: left; font-weight: bold; ">Salario del Empleo:</label>
+            {{ form.salary }}
+            {{ form.salary.errors }}
+        </div>
+      </fieldset>
+      <!-- ... Button ... -->
+      <br>
+      <div class="d-grid gap-2 d-md-flex justify-content-center">
+        <button type="submit" class="btn btn-primary mb-3">Publicar Oferta</button>
+      </div>
+    </form>
   </div>
 {% else %}
     <!-- ... Login Redirect ... -->
-    <p>No tienes permisos para acceder a esta página.</p>
+    <br><br><br><br><br><br>
+    <div class="col-md-4 offset-md-4 container-fluid card">
+      <h4><br><strong>Tienes que tener una cuenta de empleador para poder publicar un empleo.</strong><br><br></h4>
+      <div class="d-grid gap-2 d-md-flex justify-content-center">
+        <a class="btn btn-primary me-md-2" type="button" href="{% url 'login' %}"><strong>Inicia Sesión</strong></a>
+      </div>
+    </div>
 {% endif %}
 {% endblock  %}
