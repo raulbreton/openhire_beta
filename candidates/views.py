@@ -42,3 +42,12 @@ def candidates_profile(request, pk):
     else:
         #messages.error(request, "You need to be logged in to access this page.")
         return redirect('candidates_home')
+    
+def search_job_offers(request):
+    job_title_query = request.GET.get('job_title', '')
+    job_offers = JobOffer.objects.filter(job_title__icontains=job_title_query)
+
+    if not job_offers:
+        return render(request, 'no_results.html', {'job_title_query': job_title_query})
+    
+    return render(request, 'search_results.html', {'job_offers': job_offers})
