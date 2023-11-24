@@ -1,0 +1,31 @@
+<!-- apply_form_template.html -->
+{% extends 'job_application_base.html' %}
+
+{% block content %}
+  <h2>Apply for {{ job_offer.job_title }}</h2>
+  <form method="post" action="{% url 'apply_for_job' job_offer.id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{ form.cover_letter.errors }}
+    <div class="form-group">
+      <label for="{{ form.cover_letter.id_for_label }}">Cover Letter:</label>
+      {{ form.cover_letter }}
+    </div>
+    {{ form.resume.errors }}
+    <div class="form-group">
+      <label for="{{ form.resume.id_for_label }}">Resume (PDF or Word):</label>
+      {{ form.resume }}
+    </div>
+    {{ form.linkedin_profile.errors }}
+    <div class="form-group">
+      <label for="{{ form.linkedin_profile.id_for_label }}">LinkedIn Profile:</label>
+      {{ form.linkedin_profile }}
+    </div>
+    {{ form.portfolio.errors }}
+    <div class="form-group">
+      <label for="{{ form.portfolio.id_for_label }}">Portfolio:</label>
+      {{ form.portfolio }}
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

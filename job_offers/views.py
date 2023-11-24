@@ -26,3 +26,7 @@ def post_offer(request):
         company_name = EmployerProfile.objects.get(user=request.user).company_name  # Retrieve company name from employer's profile
 
     return render(request, "post_offer.html", {"form":form, 'company_name': company_name})
+
+def job_offer_detail(request, job_offer_id):
+    job_offer = JobOffer.objects.get(pk=job_offer_id)
+    return render(request, 'job_offer_detail_template.html', {'job_offer': job_offer})
